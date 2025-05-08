@@ -1,0 +1,40 @@
+<h2> Lista de Categorias</h2>
+
+<form [formGroup]="categoriasForm" (ngSubmit)="save()">
+  <p>
+    <label>Nome:</label>
+    <input type="text" formControlName="nome">
+  </p>
+  <p>
+    <label>Descrição:</label>
+    <input type="text" formControlName="descricao">
+  </p>
+  <p>
+    <label>Ativa:</label>
+    <input type="text" formControlName="ativa">
+  </p>
+  <p>
+    <button type="submit">Cadastrar</button>
+  </p>
+</form>
+
+<table style= "border: 1px solid">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Ativa?</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of categorias ; track $index) {
+      <tr>
+        <td>{{item.id}}</td>
+        <td>{{item.nome}}</td>
+        <td>{{item.descricao}}</td>
+        <td>{{item.ativa}}</td>
+      </tr>
+    }
+  </tbody>
+</table>

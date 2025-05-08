@@ -1,0 +1,39 @@
+<h2> Lista de Clientes</h2>
+
+<form [formGroup]="clientesForm" (ngSubmit)="save()">
+  <p>
+    <label>Nome:</label>
+    <input type="text" formControlName="nome">
+  </p>
+  <p>
+    <label>Telefone:</label>
+    <input type="text" formControlName="telefone">
+  </p>
+  <p>
+    <button type="submit">{{clienteIdEdicao ? "Atualizar" : "Cadastrar"}}</button>
+  </p>
+</form>
+
+<table style= "border: 1px solid">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Telefone</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of clientes ; track $index) {
+      <tr>
+        <td>{{item.id}}</td>
+        <td>{{item.nome}}</td>
+        <td>{{item.telefone}}</td>
+        <td>
+          <input type ="button" (click)="editar(item.id)" value="Editar">
+          <input type ="button" (click)="remover(item.id)" value="Remover">
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
